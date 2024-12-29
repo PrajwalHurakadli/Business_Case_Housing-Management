@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Case Study: Housing Development</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        h2 {
+            color: #27ae60;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        ul {
+            margin: 10px 0 0 20px;
+            padding: 0;
+        }
+        ul ul {
+            margin-top: 5px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        li strong {
+            color: #34495e;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+        footer p {
+            margin: 0;
+        }
+        details {
+            margin-top: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        details summary {
+            font-weight: bold;
+            cursor: pointer;
+        }
+        details pre {
+            margin: 10px 0 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Business Case Study: Housing Development Solutions in Smart City</h1>
+    </header>
+
+    <main>
+        <!-- Overview Section -->
+        <div class="section">
+            <h2>Overview</h2>
+            <p>Affordable housing development is about making sure everyone has a safe and affordable place to live, especially for those with lower incomes. As cities grow, finding housing that doesn't take up too much of a person’s paycheck becomes more important. Governments, private companies, and communities work together to build these homes, often using smart strategies like efficient land use and innovative building methods to keep costs low. The aim is not just to provide a roof over people's heads but to create communities where they have access to jobs, schools, and healthcare, helping them live better, fuller lives.</p>
+        </div>
+
+        <!-- Business Case Mapped to SDGs -->
+        <div class="section">
+            <h2>Business Case Mapped to SDGs</h2>
+            <p>In this case study, Housing Management contributes to several targets under SDG 11 (Sustainable Cities and Communities). The application of efficient algorithms such as Floyd-Warshall and BFS positively impacts sustainable urban mobility, reduces environmental impact, enhances resilience, and improves public space access.</p>
+            
+            <table>
+                <thead>
+                    <tr style="background-color: #27ae60; color: white;">
+                        <th style="padding: 10px;">SDG Target</th>
+                        <th style="padding: 10px;">Indicators</th>
+                        <th style="padding: 10px;">Relevance to Delivery Optimization</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 10px;">Target 11.1: By 2030, provide access to safe, affordable, accessible and sustainable transport systems for all.</td>
+                        <td style="padding: 10px;">Indicator 11.1.1: Proportion of urban population living in slums, informal settlements, or inadequate housing.</td>
+                        <td style="padding: 10px;">Efforts to reduce slums, provide adequate, safe, and affordable housing, and ensure access to basic services for all urban populations.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Choosing the Best Locations for New Housing Projects -->
+        <div class="section">
+            <h2>Choosing the Best Locations for New Housing Projects</h2>
+            <h3>Problem:</h3>
+            <p>How can we identify the best locations for building new affordable housing based on factors such as proximity to amenities, transportation, and land availability?</p>
+            <h3>Solution:</h3>
+            <p><strong>Algorithm Used:</strong> Floyd-Warshall Algorithm</p>
+            <p>The Floyd-Warshall algorithm calculates the shortest paths between all pairs of locations to assess accessibility and optimize location selection for new housing projects.</p>
+            <h3>Reason for Solution:</h3>
+            <p>The Floyd-Warshall algorithm is effective in calculating all-pairs shortest paths, which helps in evaluating the distance from potential housing sites to important services like transportation hubs and essential amenities.</p>
+            <h3>Impact:</h3>
+            <p>By selecting well-connected locations, we improve the quality of life for residents by reducing transportation costs and ensuring easy access to essential services.</p>
+            <h3>Time Complexity:</h3>
+            <p><strong>O(V³)</strong>, where V is the number of locations. This can be slower for very large cities but is manageable for moderate-sized areas.</p>
+            <h3>Space Complexity:</h3>
+            <p><strong>O(V²)</strong>, as it requires storing a distance matrix for all pairs of locations.</p>
+
+            <details>
+                <summary>Floyd-Warshall Code</summary>
+                <pre class="highlight">
+#include<iostream>
+#define MAX 100
+using namespace std;
+
+class Graph {
+public:
+    int numVertices;
+    int costMatrix[MAX][MAX];
+
+    Graph(int vertices);
+    void inputGraph();
+    void printGraph();
+    void findShortestPaths();
+    void displayShortestPaths();
+};
+
+Graph::Graph(int vertices) {
+    numVertices = vertices;
+}
+
+void Graph::inputGraph() {
+    cout << "Enter the cost matrix (use 999 for infinity)" << endl;
+    for (int i = 1; i <= numVertices; i++) {
+        for (int j = 1; j <= numVertices; j++) {
+            cin >> costMatrix[i][j];
+        }
+    }
+}
+
+void Graph::printGraph() {
+    cout << "The cost matrix is:" << endl;
+    for (int i = 1; i <= numVertices; i++) {
+        for (int j = 1; j <= numVertices; j++) {
+            cout << costMatrix[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+
+void Graph::findShortestPaths() {
+    for (int k = 1; k <= numVertices; k++) {
+        for (int i = 1; i <= numVertices; i++) {
+            for (int j = 1; j <= numVertices; j++) {
+                if (costMatrix[i][k] != 999 && costMatrix[k][j] != 999 && 
+                    (costMatrix[i][k] + costMatrix[k][j] < costMatrix[i][j])) {
+                    costMatrix[i][j] = costMatrix[i][k] + costMatrix[k][j];
+                }
+            }
+        }
+    }
+}
+
+void Graph::displayShortestPaths() {
+    cout << "All pairs of shortest paths are as follows:" << endl;
+    printGraph();
+}
+
+int main() {
+    int vertices;
+    cout << "Enter the number of vertices:" << endl;
+    cin >> vertices;
+
+    Graph g(vertices);
+    g.inputGraph();
+    g.printGraph();
+    g.findShortestPaths();
+    g.displayShortestPaths();
+    
+    return 0;
+}
+                </pre>
+            </details>
+        </div>
+
+        <!-- Ensuring Connectivity in the Community -->
+        <div class="section">
+            <h2>Ensuring Connectivity in the Community</h2>
+            <h3>Problem:</h3>
+            <p>How can we ensure that all housing units are well-connected within the community, allowing easy access to communal services and neighbors?</p>
+            <h3>Solution:</h3>
+            <p><strong>Algorithm Used:</strong> BFS (Breadth-First Search)</p>
+            <p>BFS is used to explore all reachable housing units, ensuring that they are connected to communal services and other units.</p>
+            <h3>Reason for Solution:</h3>
+            <p>BFS efficiently explores all housing units in a level-wise manner, making sure that every unit has a clear path to essential services like parks, schools, and hospitals.</p>
+            <h3>Impact:</h3>
+            <p>Improves overall community integration by ensuring that all housing units are accessible, promoting a sense of connectivity and shared access to facilities.</p>
+            <h3>Time Complexity:</h3>
+            <p><strong>O(V + E)</strong>, where V is the number of housing units and E is the number of connections (roads, pathways, etc.). This makes BFS efficient even for large numbers of units.</p>
+            <h3>Space Complexity:</h3>
+            <p><strong>O(V)</strong>, as it requires space to store the queue for BFS and track visited nodes (housing units).</p>
+
+            <details>
+                <summary>BFS Code</summary>
+                <pre class="highlight">
+#include<iostream>
+#define MAX 100
+using namespace std;
+
+class Graph {
+public:
+    int numVertices;
+    int costMatrix[MAX][MAX];
+
+    Graph(int vertices);
+    void inputGraph();
+    void printGraph();
+    void findShortestPaths();
+    void displayShortestPaths();
+};
+
+Graph::Graph(int vertices) {
+    numVertices = vertices;
+}
+
+void Graph::inputGraph() {
+    cout << "Enter the cost matrix (use 999 for infinity)" << endl;
+    for (int i = 1; i <= numVertices; i++) {
+        for (int j = 1; j <= numVertices; j++) {
+            cin >> costMatrix[i][j];
+        }
+    }
+}
+
+void Graph::printGraph() {
+    cout << "The cost matrix is:" << endl;
+    for (int i = 1; i <= numVertices; i++) {
+        for (int j = 1; j <= numVertices; j++) {
+            cout << costMatrix[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+
+void Graph::findShortestPaths() {
+    for (int k = 1; k <= numVertices; k++) {
+        for (int i = 1; i <= numVertices; i++) {
+            for (int j = 1; j <= numVertices; j++) {
+                if (costMatrix[i][k] != 999 && costMatrix[k][j] != 999 && 
+                    (costMatrix[i][k] + costMatrix[k][j] < costMatrix[i][j])) {
+                    costMatrix[i][j] = costMatrix[i][k] + costMatrix[k][j];
+                }
+            }
+        }
+    }
+}
+
+void Graph::displayShortestPaths() {
+    cout << "All pairs of shortest paths are as follows:" << endl;
+    printGraph();
+}
+
+int main() {
+    int vertices;
+    cout << "Enter the number of vertices:" << endl;
+    cin >> vertices;
+
+    Graph g(vertices);
+    g.inputGraph();
+    g.printGraph();
+    g.findShortestPaths();
+    g.displayShortestPaths();
+    
+    return 0;
+}
+                </pre>
+            </details>
+        </div>
+
+        <!-- Algorithms and Approaches Used in This Case Study -->
+        <div class="section">
+            <h2>Algorithms and Approaches Used in This Case Study</h2>
+            <ul>
+                <li><strong>Floyd-Warshall Algorithm:</strong> Used for calculating the shortest paths between all pairs of locations to assess accessibility for optimal housing site selection.</li>
+                <li><strong>BFS (Breadth-First Search):</strong> Applied to ensure that all housing units within the community are well-connected, facilitating easy access to communal services.</li>
+                <li><strong>Geographical Information Systems (GIS):</strong> Used to analyze spatial data and make informed decisions on site selection, land use planning, and infrastructure placement.</li>
+            </ul>
+        </div>
+
+        <!-- Conclusion Section -->
+        <div class="section">
+            <h2>Conclusion</h2>
+            <p>In conclusion, affordable housing development is a complex yet crucial aspect of urban planning that impacts the quality of life for residents and the sustainability of cities. By employing advanced algorithms such as Floyd-Warshall and BFS, and utilizing additional approaches like Linear Programming, GIS, and Agent-Based Modeling, developers can make informed decisions on location selection, resource allocation, and community integration. These techniques not only help in optimizing the development process but also ensure that the housing solutions are sustainable, accessible, and affordable for all.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Housing Development Solutions. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
